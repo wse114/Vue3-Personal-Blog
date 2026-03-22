@@ -36,9 +36,9 @@ onMounted(() => {
 
       <!-- 中间导航菜单 -->
       <div class="navbar-menu">
+        <router-link to="/about" class="navbar-link">关于我</router-link>
         <router-link to="/tech-stack" class="navbar-link">技术栈</router-link>
         <router-link to="/experience" class="navbar-link">经历</router-link>
-        <router-link to="/about" class="navbar-link">关于我</router-link>
         <router-link to="/sports" class="navbar-link">运动</router-link>
         <router-link to="/goals" class="navbar-link">目标</router-link>
       </div>

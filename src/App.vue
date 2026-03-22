@@ -26,6 +26,7 @@ import FooterBar from './components/FooterBar.vue'
 :root.dark {
   --background-light: rgba(31, 41, 55, 0.95);
   --primary-color: rgb(251, 146, 60);
+  --text-dark: var(--text-light);
   /* 注意：这里不需要重复定义--text-dark和--text-light，除非需要覆盖 */
 }
 
