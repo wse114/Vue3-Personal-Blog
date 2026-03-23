@@ -102,9 +102,9 @@ onUnmounted(() => {
         <div class="role-section">
           <span class="label">I'm a:</span>
           <div class="role-tags">
-            <span class="role-tag">Web Developer</span>
-            <span class="role-tag">Runner</span>
-            <span class="role-tag">Tech Enthusiast</span>
+            <router-link to="/about" class="role-tag">Demobilized Soldier</router-link>
+            <router-link to="/tech-stack" class="role-tag">Web Developer</router-link>
+            <router-link to="/sports" class="role-tag">Runner</router-link>
           </div>
         </div>
       </div>
@@ -318,6 +318,7 @@ onUnmounted(() => {
       color: var(--text-dark);
       font-size: 1.1rem;
       transition: all 0.3s ease;
+      text-decoration: none; /* 去掉下划线 */
 
       &:hover {
         background: rgba(251, 146, 60, 0.3);
