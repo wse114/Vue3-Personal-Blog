@@ -2,6 +2,9 @@
 import { ref } from 'vue'
 // import { useThemeStore } from '../stores/theme'
 import { ElMessage } from 'element-plus'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 // const themeStore = useThemeStore()
 // const isDark = computed(() => themeStore.isDark)
@@ -31,7 +34,7 @@ const handleLogin = () => {
     // 这里可以添加登录逻辑
     ElMessage.success('登录成功！')
     // 登录成功后可以跳转到其他页面
-    // router.push('/')
+    router.push('/')
   }
 }
 </script>

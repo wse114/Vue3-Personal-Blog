@@ -6,7 +6,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: () => import('../views/HomePart.vue')
+      component: () => import('../views/HomePage.vue')
     },
     {
       path: '/tech-stack',

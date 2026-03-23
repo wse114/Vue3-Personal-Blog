@@ -1,43 +1,47 @@
 <script setup>
-import { computed,onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useThemeStore } from '../stores/theme'
 import { useRouter } from 'vue-router'
 import { Moon, Sunny, User } from '@element-plus/icons-vue'
 import { Github } from '@icon-park/vue-next'
 
-
-// 主题状态管理
-// const isDark = ref(false)
-const themeStore = useThemeStore()
 const router = useRouter()
-// 切换主题的方法
-// const toggleTheme = () => {
-//   isDark.value = !isDark.value
-//   // 这里可以添加主题切换的逻辑
-// }
-// 使用store中的isDark状态
+const themeStore = useThemeStore()
 const isDark = computed(() => themeStore.isDark)
 
-// 使用store中的toggleTheme方法
 const toggleTheme = () => {
   themeStore.toggleTheme()
 }
 
-const scrollToSection = (index) => {
-  const sections = document.querySelectorAll('.page-container > *')
-  if (sections[index]) {
-    sections[index].scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    })
-  }
+// 使用router跳转
+const goToHome = () => {
+  router.push('/')
+}
+
+const goToAbout = () => {
+  router.push('/about')
+}
+
+const goToTechStack = () => {
+  router.push('/tech-stack')
+}
+
+const goToExperience = () => {
+  router.push('/experience')
+}
+
+const goToSports = () => {
+  router.push('/sports')
+}
+
+const goToGoals = () => {
+  router.push('/goals')
 }
 
 const goToLogin = () => {
   router.push('/login')
 }
 
-// 在组件挂载时初始化主题
 onMounted(() => {
   themeStore.initTheme()
 })
@@ -47,20 +51,17 @@ onMounted(() => {
   <nav class="navbar">
     <div class="navbar-container">
       <!-- 左侧Logo -->
-      <div class="navbar-logo" @click="scrollToSection(0)">
+      <div class="navbar-logo" @click="goToHome">
         wse
       </div>
 
       <!-- 中间导航菜单 -->
       <div class="navbar-menu">
-        <div class="navbar-menu">
-        <button class="navbar-link" @click="scrollToSection(1)">关于我</button>
-        <button class="navbar-link" @click="scrollToSection(2)">技术栈</button>
-        <button class="navbar-link" @click="scrollToSection(3)">经历</button>
-        <button class="navbar-link" @click="scrollToSection(4)">运动</button>
-        <button class="navbar-link" @click="scrollToSection(5)">目标</button>
-      </div>
-
+        <button class="navbar-link" @click="goToAbout">关于我</button>
+        <button class="navbar-link" @click="goToTechStack">技术栈</button>
+        <button class="navbar-link" @click="goToExperience">经历</button>
+        <button class="navbar-link" @click="goToSports">运动</button>
+        <button class="navbar-link" @click="goToGoals">目标</button>
       </div>
 
       <!-- 右侧社交媒体和主题切换 -->
@@ -68,7 +69,6 @@ onMounted(() => {
         <a href="https://github.com/wse114" target="_blank" rel="noopener noreferrer" class="social-link">
           <github theme="outline" size="30" :fill="isDark ? 'var(--text-light)' : 'var(--text-dark)'" />
         </a>
-
         <button class="theme-toggle" @click="toggleTheme">
           <el-icon>
             <Moon v-if="isDark" />
@@ -202,19 +202,45 @@ onMounted(() => {
   color: var(--text-light);  /* 深色主题时使用浅色文字 */
 }
 
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .login-icon {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: var(--text-dark);
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
   margin-left: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(31, 41, 55, 0.2);
+  border-radius: 50%;
+  padding: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(5px);
 
   &:hover {
-    color: rgb(251, 146, 60);
+    color: var(--primary-color);
+    background: rgba(251, 146, 60, 0.1);
+    border-color: rgba(251, 146, 60, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(251, 146, 60, 0.15);
   }
 }
 
 :root.dark .login-icon {
   color: var(--text-light);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+
+  &:hover {
+    background: rgba(251, 146, 60, 0.15);
+    border-color: rgba(251, 146, 60, 0.4);
+  }
 }
 
 /* 响应式设计 */
